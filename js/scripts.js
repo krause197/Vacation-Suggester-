@@ -1,22 +1,24 @@
 var average = function(weather, scenery, activities) {
   return (weather + scenery + activities) / 3;
 };
-
-var kuwait = function () {
-  var location = "Camp Arifjan, Kuwait";
-  $("#kuwait-img").fadeToggle();
-};
-var baghdad = function () {
-  var location = "Baghdad, Iraq";
-  $("#baghdad-img").fadeToggle();
-};
-var erbil = function () {
-  var location = "Erbil, Iraq";
-  $("erbil-img").fadeToggle();
-};
-var afganistan = function () {
-  var location = "Bagram Airfield, Afganistan";
-  $("afganistan-img").fadeToggle();
+var questionare = function(average) {
+  if (average <=1.75) {
+    var location = "Camp Arifjan, Kuwait";
+    $("#locationResult").show();
+    $("#kuwait-img").show();
+  } else if ((average > 1.75) && (average <= 2.25)) {
+    var location = "Baghdad, Iraq";
+    $("#locationResult").show();
+    $("#baghdad-img").show();
+  } else if ((average > 2.25) && (average <= 3.25)) {
+    var location = "Erbil, Iraq";
+    $("#locationResult").show();
+    $("#erbil-img").show();
+  } else {
+    var location = "Bagram Airfield, Afganistan";
+    $("#locationResult").show();
+    $("#afganistan-img").show();
+  }
 };
 
 
@@ -34,21 +36,8 @@ $(document).ready(function() {
     console.log(scenery);
     console.log(activities);
 
-
-    var questionare = function(average) {
-      if (average <=1.75) {
-        return kuwait;
-      } else if ((average > 1.75) && (average <= 2.25)) {
-          return baghdad;
-      } else if ((average > 2.25) && (average <= 3.25)) {
-          return erbil;
-      } else {
-          return afganistan;
-      }
-    };
-
-    console.log(questionare);
-    console.log(location);
-
+    $("name").text(name);
+    $("location").text(location);
+    $("home").text(home);
   });
 });
